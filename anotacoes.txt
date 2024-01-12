@@ -1,6 +1,6 @@
 1. Criando o projeto e app Django
-2. Habilitar o app / modulo polls
-3. Criar uma view para app polls
+2. Habilitar o app / módulo polls
+3. Criar uma view para a app polls
 4. Adicionar as rotas
 5. Inicializar o servidor de desenvolvimento para testar
 6. Criar um template HTML
@@ -9,3 +9,23 @@
 views => resposta
 rotas => caminho
 templates => resposta HTML
+
+
+
+===== Introducão ao templates
+- estrutura para reutilizacão _base.html
+- template de layout genérico _layout1.html
+- aplicar o layout genérico em um template fina
+- arquivos estáticos
+- usar arquivo estático: favicon
+        {{ }} => imprime valores variáveis
+        {% if var %} => executar comandos
+        <a></a>
+        {% else %}
+
+        {% endif %}
+        {# #} => comentários
+
+=== 6- Introducão aos models
+
+=== 7- Registro e login de usuários
