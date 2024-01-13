@@ -18,7 +18,7 @@ templates => resposta HTML
 - aplicar o layout genérico em um template fina
 - arquivos estáticos
 - usar arquivo estático: favicon
-        {{ }} => imprime valores variáveis
+        {{ user }} => imprime valores variáveis
         {% if var %} => executar comandos
         <a></a>
         {% else %}
@@ -27,5 +27,10 @@ templates => resposta HTML
         {# #} => comentários
 
 === 6- Introducão aos models
+- Introducão ao ORM e models
+- Migracão de dados
+- Reversão de modelos
+- Criar um model
+- Exibir dados em um template
 
 === 7- Registro e login de usuários
