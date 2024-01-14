@@ -42,5 +42,9 @@ templates => resposta HTML
 - Controle de acesso pela sessão logada
 
 === 8- Flash messages
+- Configurar as classes CSS para as mensagens
+- Incluir o suporte padrão de mensagens nas views
+- Incluir a exibicão das mensagens em nosso template
+- Testar
 
 === 9- Personalizacão do registro do usuário com novos campos

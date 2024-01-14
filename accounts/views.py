@@ -5,11 +5,13 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
-
 from django.contrib.auth import get_user_model
+from accounts.forms import AccountSignupForm
+
+
 User = get_user_model()
 
-from accounts.forms import AccountSignupForm
+
 
 # Create your views here.
 

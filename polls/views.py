@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 from .models import Question
 
 
@@ -8,6 +8,8 @@ from .models import Question
 def index(request):
     # return HttpResponse('Olá Django - index')
     # return render(request, 'index.html')
+    aviso = 'Aviso importante: esta página não exige login.'
+    messages.warning(request, aviso)
     return render(request, 'index.html', {'titulo': 'Últimas Enquetes'})
 
 
