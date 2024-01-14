@@ -34,3 +34,13 @@ templates => resposta HTML
 - Exibir dados em um template
 
 === 7- Registro e login de usuários
+- Definir oi redirecionamento padrão após login e logout
+- Criar um novo django app para gestão de contas de usuários
+- Criar e personalizar um form Django para registro de usuários
+- Criar a view e o template para registro de usuário
+- Criar as rotas específicas para gestão de contas
+- Controle de acesso pela sessão logada
+
+=== 8- Flash messages
+
+=== 9- Personalizacão do registro do usuário com novos campos

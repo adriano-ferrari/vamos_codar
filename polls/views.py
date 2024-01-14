@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 from .models import Question
 
 
@@ -10,7 +11,8 @@ def index(request):
     return render(request, 'index.html', {'titulo': 'Últimas Enquetes'})
 
 
-# define uma view baseada em funcão
+# Define uma view baseada em funcão
+@login_required
 def ola(request):
     # return HttpResponse('Olá Django!')
     questions = Question.objects.all()

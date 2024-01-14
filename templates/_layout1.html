@@ -30,6 +30,18 @@
         <span class="fs-4">Django do Zero</span>
       </a>
       <ul class="nav nav-pills">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link px-2 link-dark">Sair</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a href="{% url 'signup' %}" class="nav-link px-2 link-dark">Cadastrar</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'login' %}" class="nav-link px-2 link-dark">Acessar</a>
+            </li>
+        {% endif %}
         <li class="nav-item">
             <a href="{% url 'ola' %}" class="nav-link px-2 link-dark">Sobre</a>
         </li>
