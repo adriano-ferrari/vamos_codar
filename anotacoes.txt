@@ -51,3 +51,9 @@ templates => resposta HTML
 - Reverter as migrações dos modelos de dados
 - Criar um Model User personalizado
 - Adaptar o form de registro para coletar os novos campos
+
+=== 13- Upload de imagem para o perfil do usuário
+a) Configurar o projeto para suportar arquivos de mídia
+b) Acrescentar o FileField ao model CustomUser
+c) Criar uma view e template para Editar o perfil do usuário
+d) Criar uma rota para a view AccountUpdateView
