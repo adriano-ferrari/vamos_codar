@@ -12,7 +12,7 @@ templates => resposta HTML
 
 
 
-===== Introducão ao templates
+===== Introducão aos templates
 - estrutura para reutilizacão _base.html
 - template de layout genérico _layout1.html
 - aplicar o layout genérico em um template fina
@@ -48,3 +48,6 @@ templates => resposta HTML
 - Testar
 
 === 9- Personalizacão do registro do usuário com novos campos
+- Reverter as migrações dos modelos de dados
+- Criar um Model User personalizado
+- Adaptar o form de registro para coletar os novos campos
