@@ -14,7 +14,7 @@ def index(request):
 
 
 # Define uma view baseada em funcão
-@login_required
+@login_required # controle de acesso usando o decorador de função
 def ola(request):
     # return HttpResponse('Olá Django!')
     questions = Question.objects.all()

@@ -57,3 +57,5 @@ a) Configurar o projeto para suportar arquivos de mídia
 b) Acrescentar o FileField ao model CustomUser
 c) Criar uma view e template para Editar o perfil do usuário
 d) Criar uma rota para a view AccountUpdateView
+
+=== CRUD -> Create, Read, Update e Delete
