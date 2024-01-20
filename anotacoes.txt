@@ -52,12 +52,19 @@ templates => resposta HTML
 - Criar um Model User personalizado
 - Adaptar o form de registro para coletar os novos campos
 
-=== 10- Área administrativa
+=== 09- Área administrativa
 - Criar um usuário administrativo
 - Acessar a área administrativa
 - Explorar a área administrativa
 - Incluir o Model Question na área administrativa
 - Model CustomUser na área administrativa
+
+=== 10- CRUD Básico = Create
+- Criar a classe QuestionForm
+- Implementas as views
+- Criar o template para exibir o formulário
+- Definir as rotas para views
+- Controle de acesso às rotas
 
 === 12- CRUD Básico = DELETE
 a) Implementar as views exclusão de perguntas
