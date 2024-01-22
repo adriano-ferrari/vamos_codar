@@ -12,7 +12,7 @@ templates => resposta HTML
 
 
 
-===== Introducão aos templates
+=== 04 -Introducão aos templates
 - estrutura para reutilizacão _base.html
 - template de layout genérico _layout1.html
 - aplicar o layout genérico em um template fina
@@ -26,14 +26,14 @@ templates => resposta HTML
         {% endif %}
         {# #} => comentários
 
-=== 6- Introducão aos models
+=== 05- Introducão aos models
 - Introducão ao ORM e models
 - Migracão de dados
 - Reversão de modelos
 - Criar um model
 - Exibir dados em um template
 
-=== 7- Registro e login de usuários
+=== 06- Registro e login de usuários
 - Definir oi redirecionamento padrão após login e logout
 - Criar um novo django app para gestão de contas de usuários
 - Criar e personalizar um form Django para registro de usuários
@@ -41,13 +41,13 @@ templates => resposta HTML
 - Criar as rotas específicas para gestão de contas
 - Controle de acesso pela sessão logada
 
-=== 8- Flash messages
+=== 07- Flash messages
 - Configurar as classes CSS para as mensagens
 - Incluir o suporte padrão de mensagens nas views
 - Incluir a exibicão das mensagens em nosso template
 - Testar
 
-=== 9- Personalizacão do registro do usuário com novos campos
+=== 08- Personalizacão do registro do usuário com novos campos
 - Reverter as migrações dos modelos de dados
 - Criar um Model User personalizado
 - Adaptar o form de registro para coletar os novos campos
@@ -65,6 +65,12 @@ templates => resposta HTML
 - Criar o template para exibir o formulário
 - Definir as rotas para views
 - Controle de acesso às rotas
+
+=== 11- CRUD Básico = UPDATE
+a) Implementar as views: uma baseada em classe e outra em função
+b) Definir as rotas para views
+c) Adicionar um link/botão para "Editar Pergunta"
+d) Personalizar o título do formulário de Criação / Edição
 
 === 12- CRUD Básico = DELETE
 a) Implementar as views exclusão de perguntas

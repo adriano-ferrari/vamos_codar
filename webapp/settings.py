@@ -129,8 +129,9 @@ MEDIA_ROOT = str(BASE_DIR / 'images')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/ola'
-LOGOUT_REDIRECT_URL = '/index'
+
+LOGIN_REDIRECT_URL = '/ola/'
+LOGOUT_REDIRECT_URL = '/ola/'
 
 MESSAGES_TAGS = {
     messages.DEBUG: 'secondary',
