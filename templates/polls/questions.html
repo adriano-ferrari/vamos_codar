@@ -12,9 +12,12 @@
     {% for question in all_questions  %}
         <article>
             <p>
-                {{ question.pub_date|date:'d/m/Y' }} | {{ question.question_text }}|
+                {{ question.pub_date|date:'d/m/Y' }} | {{ question.question_text }}
                 <a href="{% url 'question_edit' pk=question.id %}" class="link-secondary">
                     Editar
+                </a> |
+                <a href="{% url 'question_delete' pk=question.id %}" class="link-secondary">
+                    Excluir
                 </a>
             </p>
         </article>
