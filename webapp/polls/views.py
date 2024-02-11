@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.http import HttpResponse
@@ -12,6 +13,7 @@ def index(request):
     return render(request, 'index.html', {'titulo': 'Enquetes'})
 
 # Define uma 'function view' chamada ola
+@login_required  # controle de acesso usando o decorador de função
 def ola(request):  # Modificar
     # return HttpResponse('Olá django')
     questions = Question.objects.all() # recupera todos questions do banco de dados

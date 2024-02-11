@@ -17,7 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  # Acrescentar ", include"
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('webapp.polls.urls')),  # Ativa as rotas do App polls.
+
+    # Ativa as rotas do App polls.
+    path('', include('webapp.polls.urls')),
+
+    # rotas personalizadas como accounts/signup
+    path('', include('webapp.accounts.urls')),
+    # rotas fornecidas pelo Django
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

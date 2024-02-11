@@ -5,6 +5,6 @@ from .views import index, ola
 
 
 urlpatterns = [
-    path('index', index, name='index'),  # cria a rota /index
-    path('ola', ola, name='ola'),  # cria a rota /ola
+    path('index/', index, name='index'),  # cria a rota /index
+    path('ola/', ola, name='ola'),  # cria a rota /ola
 ]
