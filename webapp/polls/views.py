@@ -1,16 +1,19 @@
-from django.shortcuts import render
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
-from django.http import HttpResponse
+from django.shortcuts import render
 
 from .models import Question  # Acrescentar
+
+
+# Create your views here.
 
 # Define uma 'function view' chamada index
 def index(request):
     # return HttpResponse('Olá Django - index')
     # return render(request, 'index.html')
-    return render(request, 'index.html', {'titulo': 'Enquetes'})
+    aviso = 'Aviso importante: esta página não exige login.'
+    messages.warning(request, aviso)
+    return render(request, 'index.html', {'titulo': 'Últimas Enquetes'})
 
 # Define uma 'function view' chamada ola
 @login_required  # controle de acesso usando o decorador de função

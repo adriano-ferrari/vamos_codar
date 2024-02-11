@@ -1,0 +1,9 @@
+{# habilita a exibição de todas as mensagens quando necessário #}
+{% for message in messages %}
+    <div class="container-fluid p-0">
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+            {{ message }}
+        </div>
+    </div>
+{% endfor %}

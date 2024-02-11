@@ -1,10 +1,9 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
-from django.contrib.auth.hashers import make_password  # para criptografar a senha
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import make_password  # para criptografar a senha
+from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
 from .forms import AccountSignupForm  # importa o form de registro
 
