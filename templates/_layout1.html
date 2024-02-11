@@ -30,6 +30,9 @@ _base.html
             <ul class="nav nav-pills">
                 {% if user.is_authenticated %} {# objeto user sempre está disponível nos templates #}
                     <li class="nav-item">
+                        Olá, {{ user.username }}!
+                    </li>
+                    <li class="nav-item">
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit" class="nav-link px-2 link-dark">Sair</button>

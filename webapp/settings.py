@@ -133,7 +133,6 @@ LOGIN_REDIRECT_URL = '/ola'
 LOGOUT_REDIRECT_URL = '/index'
 
 
-
 # define os nomes das classes CSS a utilizar
 MESSAGE_TAGS = {
     messages.DEBUG: 'secondary',
@@ -142,3 +141,5 @@ MESSAGE_TAGS = {
     messages.INFO: 'info',
 }
 
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
