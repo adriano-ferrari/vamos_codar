@@ -21,37 +21,40 @@ _base.html
 {% endblock %}
 
 {% block header %}
-    <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 
-        border-bottom">
-            <a href="{% url 'index' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4">Django do Zero</span>
-            </a>
-            <ul class="nav nav-pills">
-                {% if user.is_authenticated %} {# objeto user sempre está disponível nos templates #}
-                    <li class="nav-item">
-                        Olá, {{ user.username }}!
-                    </li>
-                    <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="nav-link px-2 link-dark">Sair</button>
-                        </form>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a href="{% url 'signup' %}" class="nav-link px-2 link-dark">Cadastrar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'login' %}" class="nav-link px-2 link-dark">Acessar</a>
-                    </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a href="{% url 'ola' %}" class="nav-link px-2 link-dark">Sobre</a>
-                </li>
-            </ul>
-        </header>
-    </div>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4
+       border-bottom">
+        <a href="{% url 'index' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4">Django do Zero</span>
+        </a>
+        <ul class="nav nav-pills">
+            {% if user.is_authenticated %} {# objeto user sempre está disponível nos templates #}
+            <li class="nav-item">
+                Olá, {{ user.username }}!
+            </li>
+            <li class="nav-item">
+                <a class="p-2 text-dark" href="{% url 'account_edit' pk=user.pk %}">Minha conta</a>
+            </li>
+            <li class="nav-item">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link px-2 link-dark">Sair</button>
+                </form>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a href="{% url 'signup' %}" class="nav-link px-2 link-dark">Cadastrar</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'login' %}" class="nav-link px-2 link-dark">Acessar</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a href="{% url 'ola' %}" class="nav-link px-2 link-dark">Sobre</a>
+            </li>
+        </ul>
+    </header>
+</div>
 {% endblock %}
 
 {% block main %}

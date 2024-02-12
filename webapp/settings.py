@@ -124,6 +124,10 @@ STATIC_URL = 'static/'
 STATIC_ROOT = str(BASE_DIR / 'public')
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+MEDIA_URL = '/media/'  # Caminho para servir os arquivos de mídia
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/')  # Armazenamento dos arquivos
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -143,3 +147,4 @@ MESSAGE_TAGS = {
 
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
