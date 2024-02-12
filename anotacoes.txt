@@ -58,6 +58,8 @@ templates => resposta HTML
 - Incluir o Model Question na área administrativa
 - Model CustomUser na área administrativa
 
+=== CRUD -> Create, Read, Update e Delete ===
+
 === 10- CRUD Básico = Create
 - Criar a classe QuestionForm
 - Implementas as views
@@ -66,21 +68,19 @@ templates => resposta HTML
 - Controle de acesso às rotas
 
 === 11- CRUD Básico = UPDATE
-a) Implementar as views: uma baseada em classe e outra em função
-b) Definir as rotas para views
-c) Adicionar um link/botão para "Editar Pergunta"
-d) Personalizar o título do formulário de Criação / Edição
+- Implementar as views: uma baseada em classe e outra em função
+- Definir as rotas para views
+- Adicionar um link/botão para "Editar Pergunta"
+- Personalizar o título do formulário de Criação / Edição
 
 === 12- CRUD Básico = DELETE
-a) Implementar as views exclusão de perguntas
-b) Criar o template para confirmacão da exclusão
-c) Definir as rotas para views
-d) Adicionar um link/botão para "Excluir Pergunta"
+- Implementar as views exclusão de perguntas
+- Criar o template para confirmacão da exclusão
+- Definir as rotas para views
+- Adicionar um link/botão para "Excluir Pergunta"
 
 === 13- Upload de imagem para o perfil do usuário
-a) Configurar o projeto para suportar arquivos de mídia
-b) Acrescentar o FileField ao model CustomUser
-c) Criar uma view e template para Editar o perfil do usuário
-d) Criar uma rota para a view AccountUpdateView
-
-=== CRUD -> Create, Read, Update e Delete
+- Configurar o projeto para suportar arquivos de mídia
+- Acrescentar o FileField ao model CustomUser
+- Criar uma view e template para Editar o perfil do usuário
+- Criar uma rota para a view AccountUpdateView

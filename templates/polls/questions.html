@@ -6,9 +6,17 @@
 
 {% block content %}
     <h1>Enquetes</h1>
+    <a href="{% url 'poll_add' %}" class="btn btn-lg btn-primary font-weight-bold mb-3">
+        + Pergunta
+    </a>
     {% for question in all_questions %}
         <article>
-            <p>{{ question.pub_date|date:"d/m/Y" }} | {{ question.question_text }}</p>
+            <p>
+                {{ question.pub_date|date:"d/m/Y" }} | {{ question.question_text }} |
+                <a href="{% url 'question_edit' question.id %}" class="link-secondary">
+                    Editar
+                </a>
+            </p>
         </article>
     {% endfor %}
 {% endblock %}
