@@ -84,3 +84,9 @@ templates => resposta HTML
 - Acrescentar o FileField ao model CustomUser
 - Criar uma view e template para Editar o perfil do usuário
 - Criar uma rota para a view AccountUpdateView
+
+=== 14- CRUD Básico = READ
+1) Implementar a view genérica para exibir uma pergunta
+2) Criar a rota para view QuestionDetailView
+3) Implementar a view genérica para listar todas as perguntas
+4) Implementar uma view genérica sem Model

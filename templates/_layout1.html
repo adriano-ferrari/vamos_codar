@@ -28,12 +28,18 @@ _base.html
             <span class="fs-4">Django do Zero</span>
         </a>
         <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a href="{% url 'polls_list' %}" class="p-2 text-dark">Enquetes</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'about_page' %}" class="p-2 text-dark">Sobre</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'account_edit' pk=user.pk %}" class="p-2 text-dark">Minha conta</a>
+            </li>
             {% if user.is_authenticated %} {# objeto user sempre está disponível nos templates #}
             <li class="nav-item">
                 Olá, {{ user.username }}!
-            </li>
-            <li class="nav-item">
-                <a class="p-2 text-dark" href="{% url 'account_edit' pk=user.pk %}">Minha conta</a>
             </li>
             <li class="nav-item">
                 <form method="post" action="{% url 'logout' %}">
@@ -49,9 +55,6 @@ _base.html
                 <a href="{% url 'login' %}" class="nav-link px-2 link-dark">Acessar</a>
             </li>
             {% endif %}
-            <li class="nav-item">
-                <a href="{% url 'ola' %}" class="nav-link px-2 link-dark">Sobre</a>
-            </li>
         </ul>
     </header>
 </div>

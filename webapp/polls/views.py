@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, ListView, TemplateView
 
 from .models import Question  # Acrescentar
 from .forms import QuestionForm  # importa a classe QuestionForm
@@ -132,3 +133,19 @@ def question_delete(request, question_id):
         return redirect("index")
 
     return render(request, "polls/question_confirm_delete_form.html", context)
+
+
+class QuestionDetailView(DetailView):
+    model = Question
+    template_name = 'polls/question_detail.html'
+    context_object_name = 'question'
+
+
+class QuestionListView(ListView):
+    model = Question
+    template_name = 'polls/question_list.html'
+    context_object_name = 'questions'
+
+
+class SobreTemplateView(TemplateView):
+    template_name = 'polls/sobre.html'
