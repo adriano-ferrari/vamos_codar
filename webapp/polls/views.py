@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -105,3 +105,30 @@ def question_update(request, question_id):
             return redirect("index")
 
     return render(request, 'polls/question_form.html', context)
+
+
+class QuestionDeleteView(LoginRequiredMixin, DeleteView):
+    model = Question
+    template_name = 'polls/question_confirm_delete_form.html'
+    success_url = reverse_lazy('index')
+    success_message = 'A pergunta foi excluída com sucesso.'
+
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super(QuestionDeleteView, self).form_valid(form)
+
+
+@login_required
+def question_delete(request, question_id):
+    context = {}
+    # recupera a pergunta pelo id (chave primária)
+    question = get_object_or_404(Question, id=question_id)
+    context['object'] = question
+
+    if request.method == "POST":
+        # Exclui o objeto / registro.
+        question.delete()
+        messages.success(request, 'A pergunta foi excluída com sucesso.')
+        return redirect("index")
+
+    return render(request, "polls/question_confirm_delete_form.html", context)
