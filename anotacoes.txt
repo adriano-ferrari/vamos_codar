@@ -90,3 +90,8 @@ templates => resposta HTML
 2) Criar a rota para view QuestionDetailView
 3) Implementar a view genérica para listar todas as perguntas
 4) Implementar uma view genérica sem Model
+
+=== 15- Relacionamento 1 para Muitos
+1) Implementar novo model Choice (alternativas para a Enquete)
+2) Cadastrar algumas alternativas via ORM API
+3) Exibir as alternativas na página da pergunta
