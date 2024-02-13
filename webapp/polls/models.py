@@ -11,6 +11,16 @@ class Question(models.Model):
         verbose_name = 'Pergunta'
         verbose_name_plural = 'Perguntas'
 
+    def __str__(self):
+        return self.question_text
+
+    def get_total_votes(self):
+        votes = Choice.objects.filter(question=self).aggregate(
+            total=models.Sum('votes')
+        )
+        return votes.get('total')
+
+
 
 class Choice(models.Model):
     # chave estrangeira que vincula cada alternativa a uma pergunta

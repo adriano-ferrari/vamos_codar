@@ -95,3 +95,9 @@ templates => resposta HTML
 1) Implementar novo model Choice (alternativas para a Enquete)
 2) Cadastrar algumas alternativas via ORM API
 3) Exibir as alternativas na página da pergunta
+
+=== 16- Votação na Enquete
+1) Criar um método para totalizar os votos por enquete
+2) Nova view para receber e processar os votos
+3) Criar a rota para a view que processa a votação
+4) Preparar o template para mostrar o formulário de votação

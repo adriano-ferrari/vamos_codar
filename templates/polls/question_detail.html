@@ -15,11 +15,34 @@
             </a>
         </p>
         <p>Data de publicação: {{ question.pub_date }}</p>
-        {% for choice in question.choice_set.all  %}
-            <p>{{ choice.id }} - {{ choice.choice_text }}</p>
-        {% empty %}
-            <h5>Não há alternativas cadastradas</h5>
-        {% endfor %}
+        
+        {% if total_votes %}
+            <h6 class="fw-bold">Total de votos: {{ total_votes }}</h6>
+        {% endif %}
+
+        <form action="{% url 'poll_vote' question_id=question.id %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>
+                    <h1>{{ question.question_text }}</h1>
+                    {% for choice in question.choice_set.all %}
+                        <input
+                            type="radio" name="choice" id="choice{{ forloop.counter }}"
+                            class="form-check-input" value="{{ choice.id }}">
+                        <label
+                                class="form-check-label" for="choice{{ forloop.counter }}">
+                                {{ choice.choice_text }}
+                        </label><br>
+                    {% empty %}
+                        <h5>Não há alternativas cadastradas</h5>
+                    {% endfor %}
+                </legend>
+            </fieldset>
+            {% if question.choice_set.all %}
+                <input type="submit" class="btn btn-primary btn-lg" value="votar">
+            {% endif %}
+        </form>
+
     </div>
 </div>
 {% endblock %} {# fecha o bloco content #}

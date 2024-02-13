@@ -34,10 +34,10 @@ _base.html
             <li class="nav-item">
                 <a href="{% url 'about_page' %}" class="p-2 text-dark">Sobre</a>
             </li>
+            {% if user.is_authenticated %} {# objeto user sempre está disponível nos templates #}
             <li class="nav-item">
                 <a href="{% url 'account_edit' pk=user.pk %}" class="p-2 text-dark">Minha conta</a>
             </li>
-            {% if user.is_authenticated %} {# objeto user sempre está disponível nos templates #}
             <li class="nav-item">
                 Olá, {{ user.username }}!
             </li>

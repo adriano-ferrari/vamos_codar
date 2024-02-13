@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView, TemplateView
 
-from .models import Question  # Acrescentar
+from .models import Question, Choice  # Acrescentar
 from .forms import QuestionForm  # importa a classe QuestionForm
 
 
@@ -140,6 +140,13 @@ class QuestionDetailView(DetailView):
     template_name = 'polls/question_detail.html'
     context_object_name = 'question'
 
+    def get_context_data(self, **kwargs):
+        context = super(QuestionDetailView, self).get_context_data(**kwargs)
+        question = kwargs.get('object')
+        context['total_votes'] = question.get_total_votes()
+
+        return context
+
 
 class QuestionListView(ListView):
     model = Question
@@ -149,3 +156,21 @@ class QuestionListView(ListView):
 
 class SobreTemplateView(TemplateView):
     template_name = 'polls/sobre.html'
+
+
+def vote(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    if request.method == 'POST':
+        try:
+            selected_choice = question.choice_set.get(pk=request.POST['choice'])
+        except (KeyError, Choice.DoesNotExist):
+            messages.error(request, 'Selecione uma alternativa para votar')
+        else:
+            selected_choice.votes += 1
+            selected_choice.save()
+            messages.success(request, 'O seu voto foi registrado com sucesso.')
+            return redirect(reverse_lazy('question_detail', args=(question.id,)))
+
+    context = {'question': question}
+    return render(request, 'polls/question_detail.html', context)
+
