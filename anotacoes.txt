@@ -107,3 +107,8 @@ templates => resposta HTML
 2) Nova view para exibir os resultados da enquete
 3) Criar a rota para a view que exibe os resultados
 4) Novo template para mostrar os resultados graficamente
+
+=== 18- Importação de dados pelo Terminal
+1) Criar um comando admin personalizado
+2) Gerar um CSV de exemplo para Importação
+3) Executar a importação
