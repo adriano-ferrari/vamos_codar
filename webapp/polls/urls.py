@@ -24,4 +24,5 @@ urlpatterns = [
     path('enquete/list', views.QuestionListView.as_view(), name="polls_list"),
     path('about-us', views.SobreTemplateView.as_view(), name="about_page"),
     path('enquete/<int:question_id>/vote', views.vote, name="poll_vote"),
+    path('enquete/<int:question_id>/results', views.results, name="poll_results"),
 ]

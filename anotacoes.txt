@@ -101,3 +101,9 @@ templates => resposta HTML
 2) Nova view para receber e processar os votos
 3) Criar a rota para a view que processa a votação
 4) Preparar o template para mostrar o formulário de votação
+
+=== 17- Página de Resultados da Enquete
+1) Criar um método para totalizar os resultados da enquete
+2) Nova view para exibir os resultados da enquete
+3) Criar a rota para a view que exibe os resultados
+4) Novo template para mostrar os resultados graficamente
