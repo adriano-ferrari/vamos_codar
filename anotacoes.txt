@@ -120,3 +120,7 @@ templates => resposta HTML
 4) Criar a ChoiceDeleteView para excluir alternativas
 5) Preparar os templates para os formulários
 6) Criar as rotas para o CRUD de alternativas
+
+=== 20- Paginação Simples de Resultados
+1) Modificar a view genérica que lista todas as perguntas
+2) Incluir o paginador no template renderizado pela ListView
