@@ -112,3 +112,11 @@ templates => resposta HTML
 1) Criar um comando admin personalizado
 2) Gerar um CSV de exemplo para Importação
 3) Executar a importação
+
+=== 19- Cadastro Completo de Alternativas de Respostas
+1) Gestão de alternativas durante edição da Pergunta
+2) Criar a ChoiceCreateView para registrar novas alternativas
+3) Criar a ChoiceUpdateView para editar alternativas
+4) Criar a ChoiceDeleteView para excluir alternativas
+5) Preparar os templates para os formulários
+6) Criar as rotas para o CRUD de alternativas

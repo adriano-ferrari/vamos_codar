@@ -1,0 +1,16 @@
+{% extends '_layout1.html' %} {# herda tudo que já tem em _layout1.html #}
+
+{% block content %} {# substitui o bloco content em _layout1.html #}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{{ form_title }}</h5>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %} {# obrigatório para segurança do formulário #}
+            {{ form.as_p }} {# imprime o objeto form formato em tags HMTL #}
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
+    </div>
+</div>
+{% endblock %} {# fecha o bloco content #}

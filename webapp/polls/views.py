@@ -182,3 +182,62 @@ def results(request, question_id):
 
     return render(request, 'polls/results.html', context)
 
+
+class ChoiceCreateView(LoginRequiredMixin, CreateView):
+    model = Choice
+    template_name = 'polls/choice_form.html'
+    fields = ('choice_text',)
+    success_message = 'Alternativa criada com sucesso!'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.question = get_object_or_404(Question, pk=self.kwargs.get('pk'))
+        return super(ChoiceCreateView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ChoiceCreateView, self).get_context_data(**kwargs)
+        context['form_title'] = f'Alternativa para: {self.question.question_text}'
+        return context
+
+    def form_valid(self, form):
+        form.instance.question = self.question
+        messages.success(self.request, self.success_message)
+        return super(ChoiceCreateView, self).form_valid(form)
+
+    def get_success_url(self, *args, **kwargs):
+        question_id = self.kwargs.get('pk')
+        return reverse_lazy('question_edit', kwargs={'pk': question_id})
+
+
+class ChoiceUpdateView(LoginRequiredMixin, UpdateView):
+    model = Choice
+    template_name = 'polls/choice_form.html'
+    fields = ('choice_text',)
+    success_message = 'Alternativa atualizada com sucesso!'
+
+    def get_context_data(self, **kwargs):
+        context = super(ChoiceUpdateView, self).get_context_data(**kwargs)
+        context['form_title'] = 'Editando a alternativa'
+        
+        return context
+
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super(ChoiceUpdateView, self).form_valid(form)
+
+    def get_success_url(self, *args, **kwargs):
+        question_id = self.object.question.id
+        return reverse_lazy('question_detail', kwargs={'pk': question_id})
+
+
+class ChoiceDeleteView(LoginRequiredMixin, DeleteView):
+    model = Choice
+    template_name = 'polls/choice_confirm_delete_form.html'
+    success_message = 'Alternativa excluída com sucesso!'
+
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super(ChoiceDeleteView, self).form_valid(form)
+
+    def get_success_url(self, *args, **kwargs):
+        question_id = self.object.question.id
+        return reverse_lazy('question_detail', kwargs={'pk': question_id})

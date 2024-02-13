@@ -3,18 +3,18 @@
 {% block content %} {# substitui o bloco content em _layout1.html #}
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title">Excluindo a Pergunta Nº {{ object.id }}</h5>
+            <h5 class="card-title">Excluindo a Alternativa Nº {{ object.id }}</h5>
         </div>
 
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
-                <h6>Você tem certeza que deseja excluir a pergunta abaixo?</h6>
+                <h6>Você tem certeza que deseja excluir a alternativa abaixo?</h6>
                 <br />
-                <p>{{ object.question_text }}</p>
+                <p>{{ object.choice_text }}</p>
                 <br />
                 <button type="submit" class="btn btn-danger">Confirmar</button>
-                <a href="{% url 'index' %}" class="btn btn-info">Cancelar</a>
+                <a href="{% url 'question_edit' pk=object.question.id %}" class="btn btn-info">Cancelar</a>
             </form>
         </div>
 
