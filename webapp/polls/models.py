@@ -16,6 +16,17 @@ class Question(models.Model):
         null=True,  # permite valor nulo para não conflitar com registros existentes
         on_delete=models.DO_NOTHING  # não faz n ada ao excluir o usuário autor
     )
+    categoria = models.CharField(
+        'Categoria',
+        max_length=15,
+        choices=[
+            ('geral', 'Geral'),
+            ('preferências', 'Preferências'),
+            ('política', 'Política')
+        ],
+        default=None,
+        null=True
+    )
 
     class Meta:
         verbose_name = 'Pergunta'

@@ -139,3 +139,8 @@ templates => resposta HTML
 1) Novo campo chave estrangeira no model Question
 2) Salvar o autor (usuário) ao criar uma Question
 3) Exibir o autor na página da pergunta
+
+=== 24 - Categoria de Perguntas na Enquete
+1) Novo campo categoria no model Question
+2) Permitir a escolha da categoria na criação e edição de perguntas
+3) Exibir a categoria na página da pergunta

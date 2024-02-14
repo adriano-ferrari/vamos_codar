@@ -10,6 +10,10 @@
         {% else %}
             <span>Author: Anônimo</span>
         {% endif %}
+        <br>
+        {% if question.categoria %}
+            <span>Categoria: {{ question.categoria }}</span>
+        {% endif %}
         <p>
             {{ question.question_text }}
             <a href="{% url 'question_edit' pk=question.id %}" class="link-secondary">

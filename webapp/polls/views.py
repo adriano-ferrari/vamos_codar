@@ -39,7 +39,7 @@ def ola(request):  # Modificar
 class QuestionCreateView(LoginRequiredMixin, CreateView):  # view baseada em classe, usa herança
     model = Question  # vincula o model a view para gerar o form HTML
     template_name = 'polls/question_form.html'  # template que monta o form
-    fields = ('question_text', 'pub_date', )  # campos que estarão disponíveis no form
+    fields = ('question_text', 'pub_date', 'categoria')  # campos que estarão disponíveis no form
     success_url = reverse_lazy('index')  # URL para redirecionado em caso de sucesso
     success_message = 'Pergunta criada com sucesso.'
 
