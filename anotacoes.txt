@@ -124,3 +124,8 @@ templates => resposta HTML
 === 20- Paginação Simples de Resultados
 1) Modificar a view genérica que lista todas as perguntas
 2) Incluir o paginador no template renderizado pela ListView
+
+=== 21- Restrição de Votação por Usuário
+1) Novo model para registrar que o usuário votou
+2) Criar a regra que bloqueia resposta na mesma enquete
+3) Refatorar a view vote() para aplicar a regra

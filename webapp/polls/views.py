@@ -5,10 +5,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView, TemplateView
+from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
 
 from .models import Question, Choice  # Acrescentar
 from .forms import QuestionForm  # importa a classe QuestionForm
 
+User = get_user_model()
 
 # Create your views here.
 
@@ -160,16 +163,23 @@ class SobreTemplateView(TemplateView):
     template_name = 'polls/sobre.html'
 
 
+@login_required()
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     if request.method == 'POST':
         try:
             selected_choice = question.choice_set.get(pk=request.POST['choice'])
+            session_user = get_object_or_404(User, id=request.user.id)
+            selected_choice.votes += 1
+            selected_choice.save(user=session_user)
+
         except (KeyError, Choice.DoesNotExist):
             messages.error(request, 'Selecione uma alternativa para votar')
+
+        except (ValidationError) as error:
+            messages.error(request, error.message)
+
         else:
-            selected_choice.votes += 1
-            selected_choice.save()
             messages.success(request, 'O seu voto foi registrado com sucesso.')
             return redirect(reverse_lazy('poll_results', args=(question.id,)))
 
