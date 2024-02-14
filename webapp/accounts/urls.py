@@ -11,4 +11,7 @@ urlpatterns = [
     path('accounts/<int:pk>/edit',
          views.AccountUpdateView.as_view(),
          name="account_edit"),
+    path('accounts/profile',
+         views.AccountTemplateView.as_view(),
+         name="account_detail"),
 ]

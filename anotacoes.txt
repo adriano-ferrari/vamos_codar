@@ -129,3 +129,8 @@ templates => resposta HTML
 1) Novo model para registrar que o usuário votou
 2) Criar a regra que bloqueia resposta na mesma enquete
 3) Refatorar a view vote() para aplicar a regra
+
+=== 22- Lista de Enquetes Votadas
+1) Nova view para listar as enquetes que o usuário votou
+2) Criar a rota para a nova view
+3) Criar o template para mostrar a nova página
