@@ -134,3 +134,8 @@ templates => resposta HTML
 1) Nova view para listar as enquetes que o usuário votou
 2) Criar a rota para a nova view
 3) Criar o template para mostrar a nova página
+
+=== 23- Autoria de Conteúdo
+1) Novo campo chave estrangeira no model Question
+2) Salvar o autor (usuário) ao criar uma Question
+3) Exibir o autor na página da pergunta

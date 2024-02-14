@@ -10,6 +10,12 @@ User = get_user_model()
 class Question(models.Model):
     question_text = models.CharField("Pergunta", max_length=200)
     pub_date = models.DateTimeField("Data de publicação")
+    author = models.ForeignKey(
+        User,  # chave estrangeira vinculada ao usuário
+        editable=False,  # não permite alteracao
+        null=True,  # permite valor nulo para não conflitar com registros existentes
+        on_delete=models.DO_NOTHING  # não faz n ada ao excluir o usuário autor
+    )
 
     class Meta:
         verbose_name = 'Pergunta'

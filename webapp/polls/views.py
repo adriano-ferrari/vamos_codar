@@ -45,6 +45,7 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):  # view baseada em cla
 
     # implementa o método que conclui a ação com sucesso (dentro da classe)
     def form_valid(self, form):
+        form.instance.author = self.request.user  # usuário logado
         messages.success(self.request, self.success_message)
         return super(QuestionCreateView, self).form_valid(form)
 
