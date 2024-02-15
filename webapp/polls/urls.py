@@ -32,4 +32,6 @@ urlpatterns = [
     path('alternativa/<int:pk>/add', views.ChoiceCreateView.as_view(), name="choice_add"),
     path('alternativa/<int:pk>/edit', views.ChoiceUpdateView.as_view(), name="choice_edit"),
     path('alternativa/<int:pk>/delete', views.ChoiceDeleteView.as_view(), name="choice_delete"),
+
+    path('enquete/import', views.QuestionImportView.as_view(), name="question_import"),
 ]

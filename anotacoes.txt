@@ -144,3 +144,9 @@ templates => resposta HTML
 1) Novo campo categoria no model Question
 2) Permitir a escolha da categoria na criação e edição de perguntas
 3) Exibir a categoria na página da pergunta
+
+=== 25 - Importação de Dados por Upload
+1) Criar um form para envio do arquivo de dados CSV
+2) Implementar a view para exibir o formulário
+3) Criar um template para renderizar o formulário
+4) Definir uma nova rota para a página de importação

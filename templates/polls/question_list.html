@@ -9,6 +9,10 @@
         <a href="{% url 'poll_add' %}" class="btn btn-primary mb-3">
             Cadastrar nova pergunta
         </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="{% url 'question_import' %}" class="btn btn-primary mb-3">
+            Importar perguntas
+        </a>
         <ul>
             {% for question in questions %}
                 <li>

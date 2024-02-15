@@ -1,15 +1,19 @@
+import csv
+from datetime import datetime
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView, FormView
+
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
 
 from .models import Question, Choice  # Acrescentar
-from .forms import QuestionForm  # importa a classe QuestionForm
+from .forms import QuestionForm, QuestionImportForm  # importa a classe QuestionForm
 
 User = get_user_model()
 
@@ -254,3 +258,35 @@ class ChoiceDeleteView(LoginRequiredMixin, DeleteView):
     def get_success_url(self, *args, **kwargs):
         question_id = self.object.question.id
         return reverse_lazy('question_detail', kwargs={'pk': question_id})
+
+
+class QuestionImportView(LoginRequiredMixin, FormView):
+    template_name = 'polls/question_import_form.html'
+    parent_class = FormView
+    form_class = QuestionImportForm
+    success_url = reverse_lazy('index')
+    error_message = 'Ocorreu algum erro inesperado.'
+
+    def form_valid(self, form):
+        if self.request.method == 'POST':
+
+            tmp_file_name = form.cleaned_data.get('tmp_file_name')
+
+            csv_file = open(tmp_file_name)
+            csv_reader = csv.DictReader(csv_file)
+            question_count = 0
+
+            # question_text,pub_date,2023-10-22
+            for row in csv_reader:
+                pub_date = datetime.fromisoformat(row['pub_date'])
+                question = Question(
+                    question_text=row['question_text'],
+                    pub_date=pub_date
+                )
+                question.save()
+                question_count += 1
+
+            success_message = f'{question_count} Perguntas importadas com sucesso.'
+            messages.success(self.request, success_message)
+
+        return super(QuestionImportView, self).form_valid(form)
