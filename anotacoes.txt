@@ -150,3 +150,7 @@ templates => resposta HTML
 2) Implementar a view para exibir o formulário
 3) Criar um template para renderizar o formulário
 4) Definir uma nova rota para a página de importação
+
+=== 26 - Controlar Visibilidade de Acessos
+1) Limitar acesso as operações se não estiver logado
+2) Não mostrar perguntas sem alternativas cadastradas

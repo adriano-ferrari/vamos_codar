@@ -5,14 +5,18 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Enquetes</h1>
-    <a href="{% url 'poll_add' %}" class="btn btn-lg btn-primary font-weight-bold mb-3">
-        + Pergunta
-    </a>
-    {% for question in all_questions %}
-        <article>
+<h1>Enquetes</h1>
+<a href="{% url 'poll_add' %}" class="btn btn-lg btn-primary font-weight-bold mb-3">
+    + Pergunta
+</a>
+{% for question in all_questions %}
+    <article>
+        {% if user.is_authenticated %}
             <p>
-                {{ question.pub_date|date:"d/m/Y" }} | {{ question.question_text }} |
+                {{ question.pub_date|date:"d/m/Y" }} | {{ question.question_text }}
+                {% if not question.choice_set.all %}
+                    <span class="badge bg-danger">Sem Alternativas</span>
+                {% endif %} |
                 <a href="{% url 'question_detail' pk=question.id %}" class="link-secondary">
                     Ver
                 </a>   |
@@ -23,6 +27,16 @@
                     Excluir
                 </a>
             </p>
-        </article>
-    {% endfor %}
+            {% else %}
+                {% if question.choice_set.all %}
+                    <p>
+                        {{ question.pub_date|date:"d/m/Y" }} | {{ question.question_text }} |
+                        <a href="{% url 'question_detail' pk=question.id %}" class="link-secondary">
+                            Ver
+                        </a>
+                    </p>
+                {% endif %}
+            {% endif %}
+    </article>
+{% endfor %}
 {% endblock %}
