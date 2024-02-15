@@ -154,3 +154,9 @@ templates => resposta HTML
 === 26 - Controlar Visibilidade de Acessos
 1) Limitar acesso as operações se não estiver logado
 2) Não mostrar perguntas sem alternativas cadastradas
+
+=== 27 - Exibir Dados usando Filtros
+1) Preparar a view para exibir dados filtrados
+2) Criar uma rota para processar dados filtrados
+3) Modificar template para incluir o Filtro
+4) Implementar a resposta para a seleção da categoria

@@ -20,15 +20,30 @@ User = get_user_model()
 # Create your views here.
 
 # Define uma 'function view' chamada index
-def index(request):
+def index(request, categoria=None):
     # return HttpResponse('Olá Django - index')
     # return render(request, 'index.html')
     aviso = 'Aviso importante: esta página não exige login.'
     messages.warning(request, aviso)
     #return render(request, 'index.html', {'titulo': 'Últimas Enquetes'})
+    
+    if categoria is not None:
+        questions = Question.objects.filter(categoria=categoria)
+    else:
+        questions = Question.objects.all()
+        
+    categorias = Question.objects.all().values_list(
+        'categoria', flat=True
+    ).exclude(
+        categoria=None
+    ).distinct()
 
-    questions = Question.objects.all()
-    context = {'all_questions': questions, 'titulo': 'Últimas Enquetes'}
+    context = {
+        'all_questions': questions,
+        'titulo': 'Últimas Enquetes',
+        'categoria': categoria,
+        'all_categorias': categorias
+        }
     return render(request, 'polls/questions.html', context)  # renderiza e passa o contexto
 
 # Define uma 'function view' chamada ola
