@@ -9,13 +9,14 @@
 <a href="{% url 'poll_add' %}" class="btn btn-lg btn-primary font-weight-bold mb-3">
     + Pergunta
 </a>
+
 {% if all_categorias %}
     <p>
         <form action="">
             <select name="categoria" id="categoria">
                 <option value="">Todas as categorias</option>
                 {% for cat in all_categorias  %}
-                    <option value="{{ cat }}" {% if cat == categoria %}selected{% endif %}>
+                    <option value="{{ cat }}" {% if cat == categoria %} selected {% endif %}>
                         {{ cat|title}}
                     </option>
                 {% endfor %}
@@ -23,11 +24,13 @@
         </form>
     </p>
 {% endif %}
+
 {% if categoria %}
     <p>
         <h5>Categoria: {{ categoria|title }}</h5>
     </p>
 {% endif %}
+
 {% for question in all_questions %}
     <article>
         {% if user.is_authenticated %}
@@ -63,24 +66,20 @@
 
 {% block javascript %}
 
-<script
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
 <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", () => {
-    const selectElement = document.querySelector('#categoria');
+    document.addEventListener("DOMContentLoaded", () => {
+        const selectElement = document.querySelector('#categoria');
 
-    selectElement.addEventListener("change", (event) => {
-      let selected = selectElement.value;
-      if (selected == "") {
-        window.location.href = "{% url 'index' %}";
-      }
-      else {
-        window.location.href = "{% url 'index' %}${selected}";
-      }
+        selectElement.addEventListener('change', (event) => {
+            let selected = selectElement.value;
+            if (selected == "") {
+                window.location.href = `{% url 'index' %}`;
+            } else {
+                window.location.href = `{% url 'index' %}${selected}`;
+            }
+        });
+
     });
-  });
 </script>
 
 {% endblock  %}
