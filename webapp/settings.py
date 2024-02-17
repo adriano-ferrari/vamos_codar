@@ -150,3 +150,6 @@ MESSAGE_TAGS = {
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+
+# Configuracoes de Enquete
+MAX_CHOICES_PER_QUESTION = 3

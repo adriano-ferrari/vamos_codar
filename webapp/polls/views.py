@@ -233,9 +233,15 @@ class ChoiceCreateView(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        form.instance.question = self.question
-        messages.success(self.request, self.success_message)
-        return super(ChoiceCreateView, self).form_valid(form)
+        try:
+            form.instance.question = self.question
+            response = super(ChoiceCreateView, self).form_valid(form)
+        except (ValidationError) as error:
+            messages.error(self.request, error.message)
+            return self.form_invalid(form)
+        else:
+            messages.success(self.request, self.success_message)
+            return response
 
     def get_success_url(self, *args, **kwargs):
         question_id = self.kwargs.get('pk')

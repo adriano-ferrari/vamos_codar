@@ -166,3 +166,8 @@ templates => resposta HTML
 2) Criar a view para processar o formulário de envio
 3) Incluir uma nova rota para acessar a nova view
 4) Alteração e criação de novos templates
+
+=== 29- Limitar Alternativas de Respostas no Cadastro
+1) Criar um item de configuração
+2) Implementar a regra no model Choice
+3) Alterar a view para tratar a exceção

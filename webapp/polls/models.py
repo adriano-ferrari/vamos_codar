@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
@@ -70,6 +71,12 @@ class Choice(models.Model):
         return self.choice_text
     
     def save(self, user=None, *args, **kwargs):
+        if self.id is None:
+            choices_count = Choice.objects.filter(question=self.question).count()
+            max_choices = settings.MAX_CHOICES_PER_QUESTION
+            if choices_count == max_choices:
+                raise ValidationError(f'Não é permitido adicionar mais de {max_choices} alternativas')
+
         if self.id is not None and user is not None:
             question_user = QuestionUser.objects.filter(
                 user=user,
