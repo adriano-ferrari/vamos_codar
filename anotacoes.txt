@@ -180,3 +180,7 @@ templates => resposta HTML
 === 31- Usar Níveis de Acesso
 1) Implementar um decorator de classe
 2) Aplicar o decorator para limitar o acesso
+
+=== 32- Usar Grupos para Controle de Acesso
+1) Implementar um decorator que valida acesso
+2) Aplicar o decorator para limitar o acesso via de classe

@@ -1,4 +1,5 @@
 from django.utils.decorators import method_decorator
+from django.http import HttpResponseForbidden
 
 
 def class_view_decorator(function_decorator):
@@ -7,3 +8,13 @@ def class_view_decorator(function_decorator):
         return view_object
 
     return decorator
+
+
+def check_editor_access(view_function):
+    def wrapper(request, *args, **kwargs):
+        if request.user.groups.filter(name='Editor').exists():
+            return view_function(request, *args, **kwargs)
+        
+        return HttpResponseForbidden('Você não tem permissão para acessar este recurso.')
+    
+    return wrapper

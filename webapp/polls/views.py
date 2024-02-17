@@ -18,7 +18,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import Question, Choice  # Acrescentar
 from .forms import QuestionForm, QuestionImportForm  # importa a classe QuestionForm
-from webapp.decorators import class_view_decorator
+from webapp.decorators import class_view_decorator, check_editor_access
 
 User = get_user_model()
 
@@ -99,6 +99,7 @@ def question_create(request):
     return render(request, 'polls/question_form.html', context)  # carrega o form no template
 
 
+@class_view_decorator(check_editor_access)
 class QuestionUpdateView(LoginRequiredMixin, UpdateView):
     model = Question
     template_name = 'polls/question_form.html'
