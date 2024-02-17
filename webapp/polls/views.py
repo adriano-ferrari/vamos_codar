@@ -14,9 +14,11 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import Question, Choice  # Acrescentar
 from .forms import QuestionForm, QuestionImportForm  # importa a classe QuestionForm
+from webapp.decorators import class_view_decorator
 
 User = get_user_model()
 
@@ -58,6 +60,7 @@ def ola(request):  # Modificar
 
 
 # view baseada em classe (genérica)
+@class_view_decorator(staff_member_required)
 class QuestionCreateView(LoginRequiredMixin, CreateView):  # view baseada em classe, usa herança
     model = Question  # vincula o model a view para gerar o form HTML
     template_name = 'polls/question_form.html'  # template que monta o form

@@ -176,3 +176,7 @@ templates => resposta HTML
 1) Implementar uma view para gerar o CSV com as perguntas
 2) Criar uma rota para acessar view
 3) Incluir um botão para exportação na página de perguntas
+
+=== 31- Usar Níveis de Acesso
+1) Implementar um decorator de classe
+2) Aplicar o decorator para limitar o acesso
