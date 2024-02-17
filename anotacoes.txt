@@ -140,28 +140,28 @@ templates => resposta HTML
 2) Salvar o autor (usuário) ao criar uma Question
 3) Exibir o autor na página da pergunta
 
-=== 24 - Categoria de Perguntas na Enquete
+=== 24- Categoria de Perguntas na Enquete
 1) Novo campo categoria no model Question
 2) Permitir a escolha da categoria na criação e edição de perguntas
 3) Exibir a categoria na página da pergunta
 
-=== 25 - Importação de Dados por Upload
+=== 25- Importação de Dados por Upload
 1) Criar um form para envio do arquivo de dados CSV
 2) Implementar a view para exibir o formulário
 3) Criar um template para renderizar o formulário
 4) Definir uma nova rota para a página de importação
 
-=== 26 - Controlar Visibilidade de Acessos
+=== 26- Controlar Visibilidade de Acessos
 1) Limitar acesso as operações se não estiver logado
 2) Não mostrar perguntas sem alternativas cadastradas
 
-=== 27 - Exibir Dados usando Filtros
+=== 27- Exibir Dados usando Filtros
 1) Preparar a view para exibir dados filtrados
 2) Criar uma rota para processar dados filtrados
 3) Modificar template para incluir o Filtro
 4) Implementar a resposta para a seleção da categoria
 
-=== 28 - Enviar E-mails usando Gmail
+=== 28- Enviar E-mails usando Gmail
 1) Configurar as credenciais do servidor de e-mail
 2) Criar a view para processar o formulário de envio
 3) Incluir uma nova rota para acessar a nova view
@@ -171,3 +171,8 @@ templates => resposta HTML
 1) Criar um item de configuração
 2) Implementar a regra no model Choice
 3) Alterar a view para tratar a exceção
+
+=== 30- Exportar Dados no Formato CSV
+1) Implementar uma view para gerar o CSV com as perguntas
+2) Criar uma rota para acessar view
+3) Incluir um botão para exportação na página de perguntas

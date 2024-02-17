@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -343,3 +344,21 @@ def poll_send(request, question_id):
         messages.error(request, 'Erro ao enviar mensagem!')
 
     return redirect(question_url)
+
+
+@login_required
+def question_export(request):
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment: filename="questions.csv"'},
+    )
+
+    questions = Question.objects.all()
+
+    writer = csv.writer(response)
+    writer.writerow(['question_text', 'pub_date'])
+
+    for q in questions:
+        writer.writerow([q.question_text, f'{q.pub_date:%Y-%m-%d}'])
+
+    return response

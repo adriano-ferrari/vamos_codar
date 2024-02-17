@@ -9,7 +9,12 @@
 <a href="{% url 'poll_add' %}" class="btn btn-lg btn-primary font-weight-bold mb-3">
     + Pergunta
 </a>
-
+{% if user.is_authenticated %}
+&nbsp;&nbsp;&nbsp;
+<a href="{% url 'question_export' %}" class="btn btn-lg btn-secondary font-weight-bold mb-5">
+    >> Exportar perguntas
+</a>
+{% endif %}
 {% if all_categorias %}
     <p>
         <form action="">

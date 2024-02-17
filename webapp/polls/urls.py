@@ -37,4 +37,5 @@ urlpatterns = [
     path('enquete/import', views.QuestionImportView.as_view(), name="question_import"),
 
     path('question-send/<int:question_id>', views.poll_send, name='question_send'),
+    path('question/export', views.question_export, name='question_export'),
 ]
