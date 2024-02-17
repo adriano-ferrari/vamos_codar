@@ -1,0 +1,3 @@
+Olá,
+Encontrei esta enquete e acredito que seja de seu interesse!
+Acesse em {{ question_link }}.

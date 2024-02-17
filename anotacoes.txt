@@ -160,3 +160,9 @@ templates => resposta HTML
 2) Criar uma rota para processar dados filtrados
 3) Modificar template para incluir o Filtro
 4) Implementar a resposta para a seleção da categoria
+
+=== 28 - Enviar E-mails usando Gmail
+1) Configurar as credenciais do servidor de e-mail
+2) Criar a view para processar o formulário de envio
+3) Incluir uma nova rota para acessar a nova view
+4) Alteração e criação de novos templates

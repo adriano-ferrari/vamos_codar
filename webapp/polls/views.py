@@ -8,9 +8,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView, TemplateView, FormView
-
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.contrib.auth import get_user_model
+from django.conf import settings
 
 from .models import Question, Choice  # Acrescentar
 from .forms import QuestionForm, QuestionImportForm  # importa a classe QuestionForm
@@ -26,12 +28,12 @@ def index(request, categoria=None):
     aviso = 'Aviso importante: esta página não exige login.'
     messages.warning(request, aviso)
     #return render(request, 'index.html', {'titulo': 'Últimas Enquetes'})
-    
+
     if categoria is not None:
         questions = Question.objects.filter(categoria=categoria)
     else:
         questions = Question.objects.all()
-        
+
     categorias = Question.objects.all().values_list(
         'categoria', flat=True
     ).exclude(
@@ -305,3 +307,33 @@ class QuestionImportView(LoginRequiredMixin, FormView):
             messages.success(self.request, success_message)
 
         return super(QuestionImportView, self).form_valid(form)
+
+
+def poll_send(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    question_url = reverse_lazy('question_detail', args=[question_id])
+    try:
+        email = request.POST.get('email')
+        if len(email) < 5:
+            raise ValueError('E-mail inválido')
+
+        link = f'{request._current_scheme_host}{question_url}'
+        template = 'polls/question_send'
+        text_message = render_to_string(f'{template}.txt', {'question_link': link})
+        html_message = render_to_string(f'{template}.html', {'question_link': link})
+        send_mail(
+            subject='Encontrei esta enquete e acredito que pode te interessar!',
+            message=text_message,
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[email],
+            html_message=html_message,
+        )
+        messages.success(
+            request, 'Enquete compartilhada com sucesso.'
+        )
+    except ValueError as error:
+        messages.error(request, error)
+    except Exception as error:
+        messages.error(request, 'Erro ao enviar mensagem!')
+
+    return redirect(question_url)

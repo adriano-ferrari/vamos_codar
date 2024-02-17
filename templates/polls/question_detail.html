@@ -24,6 +24,14 @@
             </a>
         </p>
         <p>Data de publicação: {{ question.pub_date }}</p>
+        <p>
+            <form action="{% url 'question_send' question_id=question.id %}" method="post">
+                {% csrf_token %}
+                <label for="email">Compartilhar</label>
+                <input type="text" id="email" name="email" placeholder="Informe o e-mail" value="">
+                <button type="submit" class="btn btn-warning">Enviar</button>
+            </form>
+        </p>
         
         {% if total_votes %}
             <h6 class="fw-bold">Total de votos: {{ total_votes }}</h6>

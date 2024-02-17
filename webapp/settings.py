@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
 from django.contrib.messages import constants as messages
+from decouple import config, Csv
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^q9c!55g$4f@at6r#1x=$_8yv3rx9*2^n=x=609mhrx8w_ihah'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
 
 
 # Application definition
@@ -125,7 +126,7 @@ STATIC_ROOT = str(BASE_DIR / 'public')
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = '/media/'  # Caminho para servir os arquivos de mídia
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/')  # Armazenamento dos arquivos
+MEDIA_ROOT = BASE_DIR, 'public'  # Armazenamento dos arquivos
 
 
 # Default primary key field type
