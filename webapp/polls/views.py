@@ -1,5 +1,6 @@
 import csv
 from datetime import datetime
+from django.utils import timezone
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -64,7 +65,7 @@ def ola(request):  # Modificar
 class QuestionCreateView(LoginRequiredMixin, CreateView):  # view baseada em classe, usa herança
     model = Question  # vincula o model a view para gerar o form HTML
     template_name = 'polls/question_form.html'  # template que monta o form
-    fields = ('question_text', 'pub_date', 'categoria')  # campos que estarão disponíveis no form
+    fields = ('question_text', 'pub_date', 'categoria', 'end_date')  # campos que estarão disponíveis no form
     success_url = reverse_lazy('index')  # URL para redirecionado em caso de sucesso
     success_message = 'Pergunta criada com sucesso.'
 
@@ -173,7 +174,13 @@ class QuestionDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(QuestionDetailView, self).get_context_data(**kwargs)
         question = kwargs.get('object')
+
+        expired = False
+        if question.end_date is not None and question.end_date < timezone.now():
+            expired = True
+        
         context['total_votes'] = question.get_total_votes()
+        context['expired'] = expired
 
         return context
 

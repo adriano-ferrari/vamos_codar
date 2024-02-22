@@ -184,3 +184,9 @@ templates => resposta HTML
 === 32- Usar Grupos para Controle de Acesso
 1) Implementar um decorator que valida acesso
 2) Aplicar o decorator para limitar o acesso via de classe
+
+=== 36- Como encerrar a votacao por data
+1) Criar novo campo no model Question
+2) Implementar regra que não permite votar em enquete encerrada
+3) Atualizar as view Create e Update para usar o novo campo
+4) Bloquear votação em enquete encerrada no template

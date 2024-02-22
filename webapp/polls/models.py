@@ -1,8 +1,9 @@
 from django.conf import settings
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.contrib.auth import get_user_model
+from django.utils import timezone
 
+from django.contrib.auth import get_user_model
 User = get_user_model()
 
 # Create your models here.
@@ -28,6 +29,7 @@ class Question(models.Model):
         default=None,
         null=True
     )
+    end_date = models.DateTimeField('Data de encerramento', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Pergunta'
@@ -77,7 +79,12 @@ class Choice(models.Model):
             if choices_count == max_choices:
                 raise ValidationError(f'Não é permitido adicionar mais de {max_choices} alternativas')
 
+        # Salvando um voto
         if self.id is not None and user is not None:
+            end_date = self.question.end_date
+            if end_date is not None and end_date < timezone.now():
+                raise ValidationError('Não é permitido votar em uma pergunta encerrada.')
+
             question_user = QuestionUser.objects.filter(
                 user=user,
                 question=self.question
