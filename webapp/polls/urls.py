@@ -11,7 +11,7 @@ from . import views
 
 
 urlpatterns = [
-    path('index/', index, name='index'),  # cria a rota /index
+    path('', index, name='index'),  # cria a rota /index
     path('index/<str:categoria>/', index, name='index'),
     path('ola/', ola, name='ola'),  # cria a rota /ola
 

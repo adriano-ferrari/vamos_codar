@@ -14,6 +14,8 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 from decouple import config, Csv
 from dj_database_url import parse as dburl
+from dotenv import load_dotenv
+load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third-party
+    'crispy_forms',
+    'crispy_bootstrap5',
+    # MyApps
     'webapp.polls.apps.PollsConfig',
     'webapp.accounts.apps.AccountsConfig',
 ]
@@ -153,3 +159,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Configuracoes de Enquete
 MAX_CHOICES_PER_QUESTION = 3
+
+
+# django-crispy-forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

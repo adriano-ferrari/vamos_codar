@@ -190,3 +190,13 @@ templates => resposta HTML
 2) Implementar regra que não permite votar em enquete encerrada
 3) Atualizar as view Create e Update para usar o novo campo
 4) Bloquear votação em enquete encerrada no template
+
+=== 37- Como preparar o Sistema para a Producão - Servidor WSGI
+1) Instalar o módulo de servidor WSGI - gunicorn
+2) Configurar e executar o servidor de producão
+3) Definir uma página principal
+
+=== 38- Como usar variáveis de ambiente
+1) Instalar e configurar o módulo dotenv
+2) Obter variáveis de ambiente
+3) Criar o arquivo .env
